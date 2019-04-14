@@ -13,9 +13,13 @@
 #   tag_start_color: "#A4D8FA"
 #   tag_end_color: "#1B9EF3"
 
+# html lang
+language: zh
+
 # Main menu navigation
 menu:
   Home: /
+  About: /about
   Archives: /archives
   Tags: /tags
   Categories: /categories
@@ -82,7 +86,7 @@ katex:
 
 # Toggle fireworks (IE >= 10)
 # ---------------
-fireworks: false
+fireworks: false # 点击烟花特效
 
 # Analysis
 # ---------------
@@ -124,9 +128,9 @@ cdn:
 
 # Post info settings
 # ---------------
-avatar:
+avatar: http://ws1.sinaimg.cn/large/005GbN8cly1g22ekaxzqhj30iq0iqn1k.jpg
 
-top_img: true # false or url of img
+top_img: http://wx2.sinaimg.cn/large/005GbN8cly1g22ee4gb56j31hc0u0atd.jpg # false or url of img
 
 post_meta:
   date_type: created # created or updated
@@ -227,9 +231,9 @@ disqus:
 
 # Footer Settings
 # ---------------
-since: 2013
+since: 2019
 
-# footer_custom_text:
+footer_custom_text: This is just the beginning...
 
 ICP:
   enable: false
@@ -254,21 +258,23 @@ busuanzi:
 
 # Sidebar Settings
 # ---------------
-#links_title: Links
-#links:
-#Name: url
+links_title: Links
+links:
+  Molunerfinn: https://molunerfinn.com # 名称：URL
+  hexo: https://hexo.io
+Name: url
 
 # Follow Me Button
-# follow:
-#   enable: true
-#   url: ''
-#   text: ''
+follow:
+  enable: true
+  url: 'https://github.com/symant233'
+  text: 'Follow Me'
 
 # Ads
 # ---------------
 # Google Adsense
-google_adsense:
-  enable: false
-  js: //pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
-  client: ca-pub-...........
-  enable_page_level_ads: true
+# google_adsense:
+#   enable: false
+#   js: //pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
+#   client: ca-pub-...........
+#   enable_page_level_ads: true
