@@ -128,9 +128,9 @@ cdn:
 
 # Post info settings
 # ---------------
-avatar: http://ws1.sinaimg.cn/large/005GbN8cly1g22ekaxzqhj30iq0iqn1k.jpg
+avatar: https://ws1.sinaimg.cn/large/005GbN8cly1g22ekaxzqhj30iq0iqn1k.jpg
 
-top_img: http://wx2.sinaimg.cn/large/005GbN8cly1g22ee4gb56j31hc0u0atd.jpg # false or url of img
+top_img: https://wx2.sinaimg.cn/large/005GbN8cly1g22ee4gb56j31hc0u0atd.jpg # false or url of img
 
 post_meta:
   date_type: created # created or updated
