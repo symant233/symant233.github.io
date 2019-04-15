@@ -54,8 +54,11 @@ highlight_theme: default
 # And you need to add the `fa` or `fab` prefix by your self.
 # ---------------
 social:
-  github fa: https://github.com/symant233
-  rss fa: https://hinataa.tk/atom.xml
+  twitter fab: https://twitter.com/home 
+  github fab: https://github.com/symant233
+  google fab: https://www.google.com
+  python fab: https://docs.python.org/zh-cn/3/
+  rss fas: https://symant.tk/atom.xml
 
 # Algolia search
 # ---------------
@@ -121,7 +124,7 @@ scripts:
 cdn:
   css:
     fontawesome: https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css
-    # fontawesomeV5: https://use.fontawesome.com/releases/v5.3.1/css/all.css
+    fontawesomeV5: https://use.fontawesome.com/releases/v5.3.1/css/all.css
   js:
     anime: https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js
     jquery: https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js
@@ -161,12 +164,17 @@ post_copyright:
 # slide
 # For reveal.js config, see https://github.com/hakimel/reveal.js#configuration
 slide:
-  separator: ---
-  separator_vertical: --
+  separator: ===
+  separator_vertical: ==
   charset: utf-8
   theme: black
-  # optional
+  loop: false
+  showNotes: false
+  autoPlayMedia: null
+  autoSlide: 0
+  autoSlideStoppable: true
   mouseWheel: false
+  hideAddressBar: true
   transition: slide
   transitionSpeed: default
   parallaxBackgroundImage: ''
