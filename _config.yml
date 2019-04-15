@@ -126,8 +126,8 @@ js_minifier:
 image_minifier:
   enable: false
 
-owner: Molunerfinn
-comment_repo: Molunerfinn.github.io
+owner: symant233
+comment_repo: symant233.github.io
 labels: ["comment"]
 
 offline:

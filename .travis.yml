@@ -15,10 +15,10 @@ before_script:
 
 
 script:
-  - hexo clean && hexo algolia && hexo g
+  - hexo clean && hexo g
   - cd ./public
   - git init
-  - git config user.name "Symant233"
+  - git config user.name "symant233"
   - git config user.email "template173@outlook.com"
   - git add .
   - git commit -m "Update docs"
