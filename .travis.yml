@@ -12,6 +12,9 @@ install:
 
 before_script:
  # - npm install -g gulp
+ - npm install hexo-cli --save
+ - npm install hexo-renderer-jade hexo-renderer-stylus --save
+ - npm install hexo-wordcount --save
 
 
 script:
