@@ -54,8 +54,8 @@ Add slides default config:
 
 ```yaml
 slide:
-  separator: ===
-  separator_vertical: ==
+  separator: ---
+  separator_vertical: --
   charset: utf-8
   theme: black
   loop: false
