@@ -54,11 +54,17 @@ Add slides default config:
 
 ```yaml
 slide:
-  separator: whatever you like
-  separator_vertical: whatever you like
+  separator: ===
+  separator_vertical: ==
   charset: utf-8
   theme: black
+  loop: false
+  showNotes: false
+  autoPlayMedia: null
+  autoSlide: 0
+  autoSlideStoppable: true
   mouseWheel: false
+  hideAddressBar: true
   transition: slide
   transitionSpeed: default
   parallaxBackgroundImage: ''

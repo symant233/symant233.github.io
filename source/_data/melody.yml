@@ -273,6 +273,7 @@ links_title: Links
 links:
   Molunerfinn: https://molunerfinn.com # 名称：URL
   hexo: https://hexo.io
+  slides: /slides
 Name: url
 
 # Follow Me Button
