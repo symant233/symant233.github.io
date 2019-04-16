@@ -55,22 +55,24 @@ print(s.recv(1024))
 
 ## 后台运行python脚本
 
-![](https://wx2.sinaimg.cn/large/005GbN8cly1g24p07krkvj30ho039aa8.jpg)
-**注意这个`&`符号, 不加这个是无法后台运行的**
+```bash
+chmod +x server.py
+nohup python3 ./server.py &
+```
+**注意这个`&`符号, 不加这个是无法后台运行的**, 并且注意你的路径, 把`./server.py`换成绝对路径会更好.
 
 如何终止后台的进程呢?
 ```bash
 root@ubuntu-s-1vcpu-1gb-sfo2-01:~$ ps ax | grep server.py
-26053 pts/0    S      0:00 python3 server.py
+26053 pts/0    S      0:00 python3 ./server.py
 26058 pts/0    S+     0:00 grep --color=auto server.py
 ```
 
 使用如上命令, 可以显示后台运行的`server.py`的进程 `PID`.
-要终止该进程只需 `kill PID` 即可.
+要终止该进程只需 `kill PID` 即可. (上面的grep是你输入的查找命令运行时产生的进程, 不需要kill它的PID, 你终止它也会显示没有这个PID因为他已经运行完了)
 ```bash
 root@ubuntu:~$ kill 26053
-root@ubuntu:~$ kill 26058
-[1]+  Terminated              python3 server.py       
+[1]+  Terminated              python3 ./server.py      
 ```
 
 ## 为什么写这个呢
