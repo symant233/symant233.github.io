@@ -25,7 +25,7 @@ Type  Hostname          Address       TTL(seconds)
 
 实现demo
 > https://larsjung.de/h5ai/demo/
-
+<!-- more -->
 ### 保存h5ai文件
 先下载下来, 解压能得到一个 `_h5ai` 文件夹,
 ```bash
