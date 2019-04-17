@@ -11,7 +11,7 @@ date: 2019-04-15 15:13:00
 通过`Cloudflare`给自有域名的github-page加上`https`。
 
 **以下部分来自教程**:
-> https://molunerfinn.com/hexo-travisci-https/#持久化构建
+> https://molunerfinn.com/hexo-travisci-https/
 
 之前在自己的主机上写博客的时候，写完执行一下`hexo g`就可以了。不过后来想想其实还是不太安全。这个方式万一在主机dang掉之后，数据就有可能找不回来了。如果每次写完既要`hexo g`又要`hexo d`的话又过于麻烦，而且只能推送构建后的页面而不能保存文章源(markdown)文件。于是趁此机会来改造一下，也是一件快意之事。
 

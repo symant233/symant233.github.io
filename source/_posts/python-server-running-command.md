@@ -11,29 +11,39 @@ categories: 服务器
 ```python server.py
 import socket
 import subprocess
+import logging  # 保存日志
+import datetime # 记录登录时间
 
+logging.basicConfig(filename = 'app.log', level = logging.DEBUG)
 s = socket.socket()
-print("[*] Server is running...")
-host = 'server_ip' # 例如 host = '11.22.33.44'
-port = 2333        # 自定义 和客户端一致 确保没被防火墙阻挡
+logging.info('[!] server is running...')
+host = 'server_ip'  # 直接填ip地址
+port = 2333         # 服务器端口 确保没被防火墙阻拦
 s.bind((host,port))
 
 while True:
     s.listen(0)
     client, address = s.accept()
-    print('[+] connected from client:', client, address)
-
+    logging.info(str(datetime.datetime.now()))
+    logging.info(str(address))
     p = client.recv(1024)
-    if p == b'your_pass_key':
+    if p == b'your_key_word': 
+        # 填写你的keyword, 防止别人乱发post请求调用你的脚本
         client.send(b'[+] Access Granted.')
-        subprocess.run(['rm','-rf','/var/www/html/*'])
-        subprocess.run(['rm','-rf','/var/www/html/.git/'])
+        subprocess.run(['sudo','bash','-c','rm -rf /var/www/html/*'])
+        subprocess.run(['sudo','bash','-c','rm -rf /var/www/html/.git/'])
         subprocess.run(['git','clone','https://github.com/username/username.github.io.git', '/var/www/html/'])
-        # 注意写成你的github用户名
+        # 改为你的username
+        logging.info('[+] Access Granted.')
+        logging.debug('==='*24)
         client.close()
         continue
+    logging.warning('[-] Access Denied.')
+    logging.debug('==='*24)
     client.send(b'[-] Access Denied.')
     client.close()
+
+logging.critical('server down at '+ datetime.datetime.now())
 ```
 <!-- more -->
 以上是server.py的内容.
