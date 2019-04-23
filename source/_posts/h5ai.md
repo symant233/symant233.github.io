@@ -1,9 +1,9 @@
 ---
-title: h5ai与nginx 添加子域名
+title: h5ai & apache添加子域名
 date: 2019-04-17 22:29:21
 tags: 
  - h5ai
- - nginx
+ - apache
 categories: 服务器
 ---
 
@@ -16,15 +16,12 @@ Type  Hostname          Address       TTL(seconds)
 
 # h5ai是输入的, 后面的主域名提供商会自己识别(不然你指向google.com怎么办), 不需要自己输入.
 ```
-*生效需要至少一个小时的时间*, 期间还是会显示`找不到 h5ai.hinataa.tk 的服务器 IP 地址`
-还可以顺便添加一下以后会用上的subdomain...
+*生效需要一定的时间*, 期间还是会显示`找不到 h5ai.hinataa.tk 的服务器 IP 地址`.
 
 ## h5ai 
-项目主页
-> https://larsjung.de/h5ai/
+> https://larsjung.de/h5ai/ # 项目主页
 
-实现demo
-> https://larsjung.de/h5ai/demo/
+> https://larsjung.de/h5ai/demo/ # 实现demo
 <!-- more -->
 ### 保存h5ai文件
 先下载下来, 解压能得到一个 `_h5ai` 文件夹,
@@ -32,45 +29,46 @@ Type  Hostname          Address       TTL(seconds)
 curl -o h5ai.zip https://release.larsjung.de/h5ai/h5ai-0.29.2.zip
 # 或者
 wget https://release.larsjung.de/h5ai/h5ai-0.29.2.zip
-# 自行替换链接为最新release
+# 自行替换链接为最新release的链接
 
-mv _h5ai /var/www/h5ai/
-# 随便放哪, 后面指定nginx配置的`root`更改一下目录就行
-nano /etc/nginx/sites-available/h5ai.hinataa.tk
-# 现在该目录下有 default hinataa.tk h5ai.hinataa.tk文件
+mv _h5ai /var/www/ftp/
+# 随便放哪, 后面指定apache配置的`DocumentRoot`更改一下目录就行
 ```
 
-### nginx配置
+### apache2配置
+```bash
+nano /etc/apache2/sites-available/h5ai.hinataa.tk.conf
+# 添加配置文件
 ```
-server {
-        listen 80;
+```conf
+<VirtualHost *:80>
+        ServerName h5ai.hinataa.tk
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/ftp
 
-        root /var/www/h5ai.hinataa.tk;
-        index index.html index.htm /_h5ai/public/index.php;
-
-        server_name h5ai.hinataa.tk;
-
-        location / {
-                try_files $uri $uri/ =404;
-        }
-        location ~ \.php$ {
-                include snippets/fastcgi-php.conf;
-                fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
-        }
-        location ~ /\.ht {
-                deny all;
-        }
-}
+        #ErrorLog ${APACHE_LOG_DIR}/error.log
+        #CustomLog ${APACHE_LOG_DIR}/access.log combined
+        
+        DirectoryIndex /_h5ai/public/index.php
+        <Directory "/var/www/ftp">
+            AllowOverride all
+            Order allow,deny
+            Allow from all
+        </Directory>
+</VirtualHost>
 ```
 **注意! 务必添加`/_h5ai/public/index.php`到默认index队列**
-否则nginx找不到你的index位置.
+例如此处的配置文件需要设置`DirectoryIndex /_h5ai/public/index.php`, 否则`apache`找不到你的index位置.
 
-Now you need to enable the configuration, make a symlink to the enabled sites: [original link (digitalocean support)](https://www.digitalocean.com/community/questions/how-to-create-subdomain-with-nginx-server-in-the-same-droplet)
+[original link](https://haofly.net/apache/index.html)
 
 ```bash
-ln -s /etc/nginx/sites-available/h5ai.hinataa.tk /etc/nginx/sites-enabled/h5ai.hinataa.tk
-
-service nginx restart
+ln -s /etc/apache2/sites-available/h5ai.hinataa.tk.conf /etc/apache2/sites-enabled/h5ai.hinataa.tk
+a2ensite h5ai.hinataa.tk
+service apache2 restart
 ```
 
 ## 等待全球dns服务器刷新...
+如果你等了一天还没用 (找不到网页的ip地址), 那你可能需要给你的域名使用一个别的`DNS NameServer`(比如`cloudflare`).
+
+如果你的子域名一直被重定向到主域名所在的文件目录(比`h5ai`这个子域名显示的内容和`www`的一样), 则你需要看一下这个教程->[link](https://haofly.net/apache/index.html).
