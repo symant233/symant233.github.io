@@ -274,13 +274,14 @@ links:
   Molunerfinn: https://molunerfinn.com # 名称：URL
   hexo: https://hexo.io
   slides: /slides
+  h5ai: https://h5ai.hinataa.tk
 Name: url
 
 # Follow Me Button
 follow:
   enable: true
-  url: 'https://github.com/symant233'
-  text: 'Follow Me'
+  url: 'mailto:recieve@outlook.jp'
+  text: 'Mail to me'
 
 # Ads
 # ---------------
