@@ -5,5 +5,7 @@
 
 ![](https://ws2.sinaimg.cn/large/005GbN8cly1g2gd8w96e7j31740g1npd.jpg)
 This repo contains my blog public data.
+
 If you want to share my posts please follow the license above.
+
 Any **abuse** report please contact `recieve#outlook.jp`.
