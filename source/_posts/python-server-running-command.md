@@ -2,7 +2,7 @@
 title: python监听端口 执行服务器命令
 date: 2019-04-16 19:22:23
 tags: python
-categories: 服务器
+categories: server
 ---
 
 ## python socket & subprocess

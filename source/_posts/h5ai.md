@@ -4,7 +4,7 @@ date: 2019-04-17 22:29:21
 tags: 
  - h5ai
  - apache
-categories: 服务器
+categories: server
 ---
 
 ## 添加subdomain
@@ -72,3 +72,5 @@ service apache2 restart
 如果你等了一天还没用 (找不到网页的ip地址), 那你可能需要给你的域名使用一个别的`DNS NameServer`(比如`cloudflare`).
 
 如果你的子域名一直被重定向到主域名所在的文件目录(比`h5ai`这个子域名显示的内容和`www`的一样), 则你需要看一下这个教程->[link](https://haofly.net/apache/index.html).
+
+这边建好了可以访问`https://h5ai.hinataa.tk/`
