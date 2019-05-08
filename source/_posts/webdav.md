@@ -1,5 +1,5 @@
 ---
-title: webdav
+title: WebDAV with apache
 date: 2019-05-02 19:11:13
 tags: 
  - apache
@@ -7,17 +7,22 @@ tags:
 categories: server
 ---
 
-## webdav
+## WebDAV
 
 先添加`dav`的subdomain, 见[这篇文章](/posts/h5ai/).
 
 ## server side
 
-新建用户:
+1. 新建用户:
 ```bash
 sudo adduser davuser # 用户名自己起
-
 mkdir /var/www/webdav
+```
+2. 添加读写权限
+```bash
+chown -R www-data:www-data /var/www/webdav 
+usermod -a -G www-data davuer
+chmod g+w /var/www/webdav # 否则后面进去了没法写入
 ```
 
 开启`apache`的`webdav mod`.
@@ -26,18 +31,17 @@ sudo a2enmod dav
 sudo a2enmod dav_fs
 nano /etc/apache2/sites-available/dav.hinataa.tk.conf
 ```
-```json
+```
 DavLockDB /var/www/DavLock
 <VirtualHost *:80>
         ServerAdmin webmaster@localhost
         DocumentRoot /var/www/webdav
-
         <Directory "/var/www/webdav">
             DAV ON
         </Directory>
 </VirtualHost>
 ```
-
+<!-- more -->
 ```bash
 ln -s /etc/apache2/sites-available/dav.hinataa.tk.conf /etc/apache2/sites-enabled/dav.hinataa.tk
 a2ensite dav.hinataa.tk
@@ -47,7 +51,7 @@ service apache2 restart
 ## 增加密码认证
 ```bash
 apt-get install apache2-utils
-htpasswd -c /etc/apache2/webdav.passwords davuser
+htdigest -c /etc/apache2/webdav.passwords webdav davuser
 # 给davuser创建一个密码
 
 chown www-data:www-data /etc/apache2/webdav.passwords
@@ -59,11 +63,12 @@ nano /etc/apache2/sites-available/dav.hinataa.tk.conf
 在`<Directory>`session添加下列代码
 ```
 AuthType Basic 
-AuthName "webdav" 
+AuthName "WebDAV Access Authentication" 
 AuthUserFile /etc/apache2/webdav.passwords 
 Require valid-user
 ```
 > 完全版本:
+
 ```
 DavLockDB /var/www/DavLock
 <VirtualHost *:80>
@@ -72,8 +77,8 @@ DavLockDB /var/www/DavLock
         DocumentRoot /var/www/webdav
         <Directory "/var/www/webdav">
             DAV ON
-            AuthType Basic 
-            AuthName "webdav" 
+            AuthType Digest 
+            AuthName "WebDAV Access Authentication" 
             AuthUserFile /etc/apache2/webdav.passwords 
             Require valid-user
         </Directory>
@@ -91,4 +96,7 @@ service apache2 restart
 ![](/images/inpost/webdav-1.png)
 ![](/images/inpost/webdav-2.png)
 
-然后就能挂载远程webdav作为一个windows磁盘, 能在命令行切进目录去, 能直接打开修改保存文件, 对于日常维护的文本文件读写速度完全能够满足.
+然后就能挂载远程webdav作为一个windows磁盘, 能在命令行切进目录去, 
+能直接打开修改保存文件, 对于日常维护的文本文件读写速度完全能够满足.
+
+*Thanks for the help of apache webdav [tutorail](https://helpcenter.onlyoffice.com/server/community/connect-webdav-server-ubuntu.aspx).*
