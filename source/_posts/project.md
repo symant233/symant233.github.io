@@ -21,7 +21,7 @@ slide:
 
 ===
 <!-- .slide: data-transition="fade" data-background="#00C4B6" -->
-![软件设计框架](https://i.loli.net/2019/05/17/5cde5b96ee6b022075.png)
+![软件设计框架](https://i.loli.net/2019/05/17/5cde9745ddbac11921.png)
 
 ===
 
