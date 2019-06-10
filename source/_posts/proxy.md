@@ -48,6 +48,16 @@ systemctl status shadowsocks-libev.service
 # 重启ss服务, 用stop停止
 ```
 
+可能出现的一些问题:
+```bash
+sudo apt install rng-tools
+rngd -r /dev/urandom
+# 如果ss显示不能快速产生随机数则运行上面两行
+
+# 如果使用`systemctl`出现错误则使用这个
+nohup ss-server -c /etc/shadowsocks-libev/config.json -u &
+```
+
 ### 使用BBR
 
 > **首先确定你的linux kernel版本要大于4.9**(使用 `uname -r` 命令)
@@ -70,3 +80,5 @@ lsmod | grep bbr
 
 之后不用任何操作, BBR已经在执行了.
 另外还有什么锐速, kcptun之类的, 就我个人而言BBR已经提速非常明显了, 我也懒得搞kcptun了. 别人博客写的"kcptun 相当于外面包一层 UDP ，然后设置多倍发包，月经量飞速流逝", 就自行斟酌了吧.
+
+可以参考[这个链接](https://zhuanlan.zhihu.com/p/29295440)更新kernel和开启bbr
