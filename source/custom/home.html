@@ -1,0 +1,113 @@
+layout: false
+---
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Link ✨ Start!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <style>
+        .input {
+            border-color: #dbdbdb;
+            box-shadow: none;
+        }
+
+        .input:hover {
+            border-color: #dbdbdb;
+        }
+
+        .input:focus {
+            background-color: #fff;
+            border-color: #dbdbdb;
+            border-radius: 4px;
+            color: #363636;
+            box-shadow: none;
+        }
+
+        .button:hover {
+            background-color: #66ad57;
+            box-shadow: none;
+            border-color: #dbdbdb;
+        }
+
+        .button:focus {
+            box-shadow: none;
+            border-color: #dbdbdb;
+        }
+
+        .button.is-focused:not(:active),
+        .button:focus:not(:active) {
+            box-shadow: none;
+        }
+    </style>
+    <script>
+        function load() {
+            document.getElementById("search_button").classList.add('is-loading');
+            var query = document.getElementById('search_input').value;
+            if (query == "") {
+                document.getElementById("search_button").classList.remove('is-loading');
+                return;
+            }
+            var duck = "https://start.duckduckgo.com/?q=";
+            window.open(duck + query, '_self')
+        }
+    </script>
+</head>
+
+<body>
+    <section class="hero is-light is-fullheight">
+        <!-- Hero head: will stick at the top -->
+        <div class="hero-head"></div>
+
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body columns has-text-centered">
+            <div class="column is-one-quarter"></div>
+            <div class="column is-0"></div>
+            <div class="column auto">
+                <img src="https://pic.superbed.cn/item/5d6e7ec3451253d178dd9db0.png" width="90%">
+                <!-- <img src="https://ae01.alicdn.com/kf/Hc9cc9dbecad144d3861688e6aded3cc1G.gif" width="13%"> -->
+                <div class="field is-medium has-addons">
+                    <p class="control" style="display: contents;">
+                        <form style="display: contents;" action="#" onsubmit="return load()">
+                        <input id="search_input" class="input is-medium" type="text" placeholder="✎Search..."
+                            style="border-right-color: white;" autocomplete="off" autofocus></form>
+                    </p>
+                    <p class="control">
+                        <button id="search_button" class="button is-medium" style="border-left-color: white;"
+                            type="submit" onclick="load()">
+                            🔍
+                        </button>
+                    </p>
+                </div>
+                <br id="info">
+                <br>
+                <br>
+                <br>
+            </div>
+            <div class="column is-0"></div>
+            <div class="column is-one-quarter"></div>
+        </div>
+
+        <!-- Hero footer: will stick at the bottom -->
+        <div class="hero-foot">
+            <!-- <nav class="tabs">
+            <div class="container">
+              <ul>
+                <li class="is-active"><a>Overview</a></li>
+                <li><a>Modifiers</a></li>
+                <li><a>Grid</a></li>
+                <li><a>Elements</a></li>
+                <li><a>Components</a></li>
+                <li><a>Layout</a></li>
+              </ul>
+            </div>
+          </nav> -->
+        </div>
+    </section>
+</body>
+
+</html>
