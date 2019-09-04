@@ -1,0 +1,158 @@
+<!-- layout: false
+--- -->
+
+<!DOCTYPE html>
+<html class="is-clipped">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Link ✨ Start!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <style>
+        .input {
+            border-color: #dbdbdb;
+            box-shadow: none;
+        }
+
+        .input:hover {
+            border-color: #dbdbdb;
+        }
+
+        .input:focus {
+            background-color: #fff;
+            border-color: #dbdbdb;
+            color: #363636;
+            box-shadow: none;
+        }
+
+        .button:hover {
+            background-color: #66ad57;
+            box-shadow: none;
+            border-color: #dbdbdb;
+        }
+
+        .button:focus {
+            box-shadow: none;
+            border-color: #dbdbdb;
+        }
+
+        .button.is-focused:not(:active),
+        .button:focus:not(:active) {
+            box-shadow: none;
+        }
+    </style>
+    <script>
+        var list = {
+            "DuckDuckGo": "https://start.duckduckgo.com/?q=",
+            "Bing_CN": "https://cn.bing.com/search?ensearch=0&q=",
+            "Bing_EN": "https://cn.bing.com/search?ensearch=1&q="
+        }
+        function load() {
+            var query = document.getElementById('search_input').value;
+            if (query != "") {
+                document.getElementById("search_button").classList.add('is-loading');
+                var engine = list[conf];
+                window.open(engine + query, '_self');
+            }
+            else { show_info('ERROR', 'is-danger'); }
+            return;
+        }
+
+        function show_info(msg, level) {
+            var e = document.getElementById('info');
+        }
+        function set_cookie(value) {
+            document.cookie = "engine=" + value + ";path=/";
+            document.getElementById('search_input').setAttribute("placeholder", value);
+        }
+        function get_cookie() {
+            var cname = 'engine';
+            var name = cname + '=';
+            var all = document.cookie.split(';');
+            for (i = 0; i < all.length; i++) {
+                var c = all[i].trim();
+                if (c.indexOf('engine=') == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        function open_setting() {
+            document.getElementById('modal').classList.add('is-active');
+        }
+        function close_setting() {
+            document.getElementById('modal').classList.remove('is-active')
+        }
+
+        let conf = get_cookie();
+        if (conf == "") {
+            conf = "DuckDuckGo";
+        }
+    </script>
+</head>
+
+<body>
+    <div class="modal" id="modal">
+        <div class="modal-background" onclick="close_setting()"></div>
+        <div class="modal-content">
+            <article class="message is-info">
+                <div class="message-body">
+                    We use <code>cookies</code> to save engine configration.
+                    There are three options avaliable on this site by clicking buttons behind.
+                    <a class="button is-small is-rounded" style="background-color: #de5833; color: #ffffff;" onclick="set_cookie('DuckDuckGo')">DuckDuckGO</a>
+                    <a class="button is-small is-rounded" style="background-color: #0c8484; color: #ffffff;" onclick="set_cookie('Bing_CN')">Bing_CN</a>
+                    <a class="button is-small is-rounded" style="background-color: #feb632;" onclick="set_cookie('Bing_EN')">Bing_EN</a>
+                    You will see the input placeholder text changed to the engine name. 
+                </div>
+            </article>
+        </div>
+        <button class="modal-close is-large delete" aria-label="close" onclick="close_setting()"></button>
+    </div>
+    <section class="hero is-light is-fullheight">
+        <!-- Hero head: will stick at the top -->
+        <div class="hero-head"></div>
+
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body columns has-text-centered">
+            <div class="column is-one-quarter"></div>
+            <div class="column is-0"></div>
+            <div class="column auto">
+                <img src="https://pic.superbed.cn/item/5d6e7ec3451253d178dd9db0.png" width="90%">
+                <div class="field is-medium has-addons is-center">
+                    <form style="width: 100%;" class="center" action="#" onsubmit="return load()">
+                        <input id="search_input" class="input is-medium" type="text" placeholder="✎Search..."
+                            style="border-right-color: white; border-top-right-radius: 0%; border-bottom-right-radius: 0%;"
+                            autocomplete="off" autofocus></form>
+                    <button id="search_button" class="button is-medium" type="submit" onclick="load()"
+                        style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;">
+                        🔍
+                    </button>
+                </div>
+                <div class="is-center">
+                    <!-- <a class="button is-small is-rounded is-info">bilibili.com</a> -->
+                    <a class="button is-small is-rounded is-info" onclick="open_setting()">set search engine</a>
+                    <a class="button is-small is-rounded is-primary" onclick="show_info('Coming soon...', 'is-warning')">about</a>
+                </div>
+                <span id="info"></span>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+            <div class="column is-0"></div>
+            <div class="column is-one-quarter"></div>
+        </div>
+
+        <!-- Hero footer: will stick at the bottom -->
+        <div class="hero-foot" id="foot">
+
+        </div>
+    </section>
+    <script>
+        document.getElementById('search_input').setAttribute("placeholder", conf);
+    </script>
+</body>
+
+</html>
