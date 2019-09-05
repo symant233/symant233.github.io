@@ -9,7 +9,6 @@ layout: false
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Link ✨ Start!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <style>
         .input {
             border-color: #dbdbdb;
@@ -40,6 +39,19 @@ layout: false
 
         .button.is-focused:not(:active),
         .button:focus:not(:active) {
+            box-shadow: none;
+        }
+        #bili {
+            background-color: #ff8eb3;
+            color: white;
+        }
+        #bili:hover {
+            background-color: #f874a0;
+        }
+        #bili:active {
+            background-color: #fc5d92;
+        }
+        #bili:focus{
             box-shadow: none;
         }
     </style>
@@ -122,25 +134,30 @@ layout: false
 
         <!-- Hero content: will be in the middle -->
         <div class="hero-body has-text-centered">
-            <div style="margin-left: auto; margin-right: auto; width: 675px;">
+            <div style="margin-left: auto; margin-right: auto; width: 613px;">
                 <img src="https://pic.superbed.cn/item/5d6e7ec3451253d178dd9db0.png" width="90%">
-                <div class="field is-medium has-addons is-center">
-                    <form style="width: 100%;" class="center" action="#" onsubmit="return load()">
-                        <input id="search_input" class="input is-medium" type="text" placeholder="✎Search..."
-                            style="border-right-color: white; border-top-right-radius: 0%; border-bottom-right-radius: 0%;"
-                            autocomplete="off" autofocus></form>
+                <form style="width: 100%; box-shadow: 0px 0px 10px 0px rgba(10,10,10,.1);" class="field is-medium has-addons" action="#" onsubmit="return load()">
+                    <input id="search_input" class="input is-medium" type="text" placeholder="✎Search..."
+                        style="border-right-color: white; border-top-right-radius: 0%; border-bottom-right-radius: 0%;"
+                        autocomplete="off" autofocus />
                     <button id="search_button" class="button is-medium" type="submit" onclick="load()"
                         style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;">
                         🔍
                     </button>
-                </div>
-                <div class="is-center" id="toolbar">
+                </form>
+                <div class="is-center" id="toolbar" style="margin-bottom: 12px;">
                     <!-- <a class="button is-small is-rounded is-info">bilibili.com</a> -->
-                    <a class="button is-small is-rounded is-info" onclick="open_setting()">set search engine</a>
+                    <a class="button is-small is-rounded is-info" onclick="open_setting()">set engine</a>
                     <a class="button is-small is-rounded is-primary"
                         onclick="show_info('Coming soon...', 'is-warning')">about</a>
+                    <a class="button is-small is-rounded is-danger" id="bili" href="https://www.bilibili.com/">bilibili</a>
                 </div>
-                <span id="info"></span>
+                <div id="info is-center">
+                    <!-- <div class="tags has-addons">
+                        <span class="tag is-danger">test</span>
+                        <a class="tag is-delete is-white"></a>
+                    </div> -->
+                </div>
                 <br>
                 <br>
                 <br>
