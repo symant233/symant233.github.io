@@ -65,8 +65,10 @@ layout: false
             e.appendChild('<a class="button is-small is-rounded is-info" onclick="open_setting()">set search engine</a>');
         }
         function set_cookie(value) {
+            conf = value;
             document.cookie = "engine=" + value + ";path=/";
             document.getElementById('search_input').setAttribute("placeholder", value);
+            close_setting();
         }
         function get_cookie() {
             var cname = 'engine';
@@ -139,6 +141,7 @@ layout: false
                         onclick="show_info('Coming soon...', 'is-warning')">about</a>
                 </div>
                 <span id="info"></span>
+                <br>
                 <br>
                 <br>
                 <br>
