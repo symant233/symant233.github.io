@@ -3,7 +3,7 @@ layout: false
 
 <!DOCTYPE html>
 <html class="is-clipped">
-
+<!-- <html> -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,7 +61,8 @@ layout: false
         }
 
         function show_info(msg, level) {
-            var e = document.getElementById('info');
+            var e = document.getElementById('toolbar');
+            e.appendChild('<a class="button is-small is-rounded is-info" onclick="open_setting()">set search engine</a>');
         }
         function set_cookie(value) {
             document.cookie = "engine=" + value + ";path=/";
@@ -101,10 +102,13 @@ layout: false
                 <div class="message-body">
                     We use <code>cookies</code> to save engine configration.
                     There are three options avaliable on this site by clicking buttons behind.
-                    <a class="button is-small is-rounded" style="background-color: #de5833; color: #ffffff;" onclick="set_cookie('DuckDuckGo')">DuckDuckGO</a>
-                    <a class="button is-small is-rounded" style="background-color: #0c8484; color: #ffffff;" onclick="set_cookie('Bing_CN')">Bing_CN</a>
-                    <a class="button is-small is-rounded" style="background-color: #feb632;" onclick="set_cookie('Bing_EN')">Bing_EN</a>
-                    You will see the input placeholder text changed to the engine name. 
+                    <a class="button is-small is-rounded" style="background-color: #de5833; color: #ffffff;"
+                        onclick="set_cookie('DuckDuckGo')">DuckDuckGO</a>
+                    <a class="button is-small is-rounded" style="background-color: #0c8484; color: #ffffff;"
+                        onclick="set_cookie('Bing_CN')">Bing_CN</a>
+                    <a class="button is-small is-rounded" style="background-color: #feb632;"
+                        onclick="set_cookie('Bing_EN')">Bing_EN</a>
+                    You will see the input placeholder text changed to the engine name.
                 </div>
             </article>
         </div>
@@ -115,10 +119,8 @@ layout: false
         <div class="hero-head"></div>
 
         <!-- Hero content: will be in the middle -->
-        <div class="hero-body columns has-text-centered">
-            <div class="column is-one-quarter"></div>
-            <div class="column is-0"></div>
-            <div class="column auto">
+        <div class="hero-body has-text-centered">
+            <div style="margin-left: auto; margin-right: auto; width: 675px;">
                 <img src="https://pic.superbed.cn/item/5d6e7ec3451253d178dd9db0.png" width="90%">
                 <div class="field is-medium has-addons is-center">
                     <form style="width: 100%;" class="center" action="#" onsubmit="return load()">
@@ -130,10 +132,11 @@ layout: false
                         🔍
                     </button>
                 </div>
-                <div class="is-center">
+                <div class="is-center" id="toolbar">
                     <!-- <a class="button is-small is-rounded is-info">bilibili.com</a> -->
                     <a class="button is-small is-rounded is-info" onclick="open_setting()">set search engine</a>
-                    <a class="button is-small is-rounded is-primary" onclick="show_info('Coming soon...', 'is-warning')">about</a>
+                    <a class="button is-small is-rounded is-primary"
+                        onclick="show_info('Coming soon...', 'is-warning')">about</a>
                 </div>
                 <span id="info"></span>
                 <br>
@@ -141,13 +144,14 @@ layout: false
                 <br>
                 <br>
             </div>
-            <div class="column is-0"></div>
-            <div class="column is-one-quarter"></div>
         </div>
 
         <!-- Hero footer: will stick at the bottom -->
         <div class="hero-foot" id="foot">
-
+            <!-- <div class="tags has-addons">
+                <span class="tag is-danger">test</span>
+                <a class="tag is-delete"></a>
+            </div> -->
         </div>
     </section>
     <script>
