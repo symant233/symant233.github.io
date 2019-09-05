@@ -1,9 +1,10 @@
-layout: false
----
+<!-- layout: false
+--- -->
 
 <!DOCTYPE html>
 <html class="is-clipped">
 <!-- <html> -->
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,17 +42,21 @@ layout: false
         .button:focus:not(:active) {
             box-shadow: none;
         }
+
         #bili {
             background-color: #ff8eb3;
             color: white;
         }
+
         #bili:hover {
             background-color: #f874a0;
         }
+
         #bili:active {
             background-color: #fc5d92;
         }
-        #bili:focus{
+
+        #bili:focus {
             box-shadow: none;
         }
     </style>
@@ -59,7 +64,9 @@ layout: false
         var list = {
             "DuckDuckGo": "https://start.duckduckgo.com/?q=",
             "Bing_CN": "https://cn.bing.com/search?ensearch=0&q=",
-            "Bing_EN": "https://cn.bing.com/search?ensearch=1&q="
+            "Bing_EN": "https://cn.bing.com/search?ensearch=1&q=",
+            "Google": "https://www.google.com/search?q=",
+            "Yandex": "https://yandex.com/search/?text="
         }
         function load() {
             var query = document.getElementById('search_input').value;
@@ -69,7 +76,7 @@ layout: false
                 window.open(engine + query, '_self');
             }
             else { show_info('ERROR', 'is-danger'); }
-            return;
+            return false;
         }
 
         function show_info(msg, level) {
@@ -103,7 +110,7 @@ layout: false
 
         let conf = get_cookie();
         if (conf == "") {
-            conf = "DuckDuckGo";
+            conf = "Bing_EN";
         }
     </script>
 </head>
@@ -115,13 +122,17 @@ layout: false
             <article class="message is-info">
                 <div class="message-body">
                     We use <code>cookies</code> to save engine configration.
-                    There are three options avaliable on this site by clicking buttons behind.
+                    There are five options avaliable on this site by clicking buttons behind.
                     <a class="button is-small is-rounded" style="background-color: #de5833; color: #ffffff;"
                         onclick="set_cookie('DuckDuckGo')">DuckDuckGO</a>
                     <a class="button is-small is-rounded" style="background-color: #0c8484; color: #ffffff;"
                         onclick="set_cookie('Bing_CN')">Bing_CN</a>
                     <a class="button is-small is-rounded" style="background-color: #feb632;"
                         onclick="set_cookie('Bing_EN')">Bing_EN</a>
+                    <a class="button is-small is-rounded" style="background-color: #4285f4; color: white;"
+                        onclick="set_cookie('Google')">Google</a>
+                    <a class="button is-small is-rounded" style="background-color: #ff0000; color: white;"
+                        onclick="set_cookie('Yandex')">Yandex</a>
                     You will see the input placeholder text changed to the engine name.
                 </div>
             </article>
@@ -136,7 +147,8 @@ layout: false
         <div class="hero-body has-text-centered">
             <div style="margin-left: auto; margin-right: auto; width: 613px;">
                 <img src="https://pic.superbed.cn/item/5d6e7ec3451253d178dd9db0.png" width="90%">
-                <form style="width: 100%; box-shadow: 0px 0px 10px 0px rgba(10,10,10,.1);" class="field is-medium has-addons" action="#" onsubmit="return load()">
+                <form style="width: 100%; box-shadow: 0px 0px 10px 0px rgba(10,10,10,.1);"
+                    class="field is-medium has-addons" onsubmit="return load()">
                     <input id="search_input" class="input is-medium" type="text" placeholder="✎Search..."
                         style="border-right-color: white; border-top-right-radius: 0%; border-bottom-right-radius: 0%;"
                         autocomplete="off" autofocus />
@@ -146,11 +158,11 @@ layout: false
                     </button>
                 </form>
                 <div class="is-center" id="toolbar" style="margin-bottom: 12px;">
-                    <!-- <a class="button is-small is-rounded is-info">bilibili.com</a> -->
                     <a class="button is-small is-rounded is-info" onclick="open_setting()">set engine</a>
                     <a class="button is-small is-rounded is-primary"
                         onclick="show_info('Coming soon...', 'is-warning')">about</a>
-                    <a class="button is-small is-rounded is-danger" id="bili" href="https://www.bilibili.com/">bilibili</a>
+                    <a class="button is-small is-rounded is-danger" id="bili"
+                        href="https://www.bilibili.com/">bilibili</a>
                 </div>
                 <div id="info is-center">
                     <!-- <div class="tags has-addons">
