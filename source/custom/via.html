@@ -1,5 +1,5 @@
-layout: false
----
+<!-- layout: false
+--- -->
 
 <!DOCTYPE html>
 <html class="is-clipped">
@@ -8,6 +8,9 @@ layout: false
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="@symant233 https://github.com/symant233">
+    <meta name="keywords" content="search, engine">
+    <meta name="description" content="个性化 搜索 引擎">
     <title>Link ✨ Start!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <style>
@@ -66,7 +69,10 @@ layout: false
             "Bing_CN": "https://cn.bing.com/search?ensearch=0&q=",
             "Bing_EN": "https://cn.bing.com/search?ensearch=1&q=",
             "Google": "https://www.google.com/search?q=",
-            "Yandex": "https://yandex.com/search/?text="
+            "Yandex": "https://yandex.com/search/?text=",
+            "Github": "https://github.com/search?q=",
+            "bilibili": "https://search.bilibili.com/all?keyword=",
+            "zhihu": "https://www.zhihu.com/search?type=content&q=",
         }
         function load() {
             var query = document.getElementById('search_input').value;
@@ -78,7 +84,6 @@ layout: false
             else { show_info('ERROR', 'is-danger'); }
             return false;
         }
-
         function show_info(msg, level) {
             var e = document.getElementById('toolbar');
             e.appendChild('<a class="button is-small is-rounded is-info" onclick="open_setting()">set search engine</a>');
@@ -101,17 +106,13 @@ layout: false
             }
             return "";
         }
-        function open_setting() {
-            document.getElementById('modal').classList.add('is-active');
-        }
         function close_setting() {
-            document.getElementById('modal').classList.remove('is-active')
+            document.getElementById('modal').classList.remove('is-active');
+            document.getElementById('about').classList.remove('is-active');
         }
 
         let conf = get_cookie();
-        if (conf == "") {
-            conf = "Bing_EN";
-        }
+        if (conf == "") conf = "Bing_EN";
     </script>
 </head>
 
@@ -119,10 +120,10 @@ layout: false
     <div class="modal" id="modal">
         <div class="modal-background" onclick="close_setting()"></div>
         <div class="modal-content">
-            <article class="message is-info">
+            <article class="message is-info" style="max-width: 640px; margin: auto;">
                 <div class="message-body">
-                    We use <code>cookies</code> to save engine configration.
-                    There are five options avaliable on this site by clicking buttons behind.
+                    We use <code>cookies</code> to store engine configration.
+                    There are eight options avaliable on this site by clicking buttons behind.
                     <a class="button is-small is-rounded" style="background-color: #de5833; color: #ffffff;"
                         onclick="set_cookie('DuckDuckGo')">DuckDuckGO</a>
                     <a class="button is-small is-rounded" style="background-color: #0c8484; color: #ffffff;"
@@ -133,17 +134,37 @@ layout: false
                         onclick="set_cookie('Google')">Google</a>
                     <a class="button is-small is-rounded" style="background-color: #ff0000; color: white;"
                         onclick="set_cookie('Yandex')">Yandex</a>
+                    <a class="button is-small is-rounded" style="background-color: #24292e; color: white;"
+                        onclick="set_cookie('Github')">Github</a>
+                    <a class="button is-small is-rounded" style="background-color: #f45a8d; color: white;"
+                        onclick="set_cookie('bilibili')">bilibili</a>
+                    <a class="button is-small is-rounded" style="background-color: #0077e6; color: white;"
+                        onclick="set_cookie('zhihu')">zhihu</a>
                     You will see the input placeholder text changed to the engine name.
+                </div>
+            </article>
+        </div>
+    </div>
+    <div class="modal" id="about">
+        <div class="modal-background" onclick="close_setting()"></div>
+        <div class="modal-content">
+            <article class="message is-primary" style="max-width: 500px; margin: auto;">
+                <div class="message-body">
+                    <p>Welcome to this via site. This site is writen in pure javascript and CSS module
+                        <code>bulma</code>.
+                        I'm a beginner of web development. The site's source code is in
+                        <a href="https://github.com/symant233/symant233.github.io/blob/master/custom/via.html"
+                            target="_blank">github_link</a>
+                        .</p>
+                    <p>If you have some suggestion please open an issue in that project. If you take the source code
+                        please keep the author
+                        information in the meta data, thanks!</p>
                 </div>
             </article>
         </div>
         <button class="modal-close is-large delete" aria-label="close" onclick="close_setting()"></button>
     </div>
     <section class="hero is-light is-fullheight">
-        <!-- Hero head: will stick at the top -->
-        <div class="hero-head"></div>
-
-        <!-- Hero content: will be in the middle -->
         <div class="hero-body has-text-centered">
             <div style="margin: auto; width: 613px;">
                 <img src="https://pic.superbed.cn/item/5d6e7ec3451253d178dd9db0.png" width="90%" draggable="false">
@@ -158,11 +179,12 @@ layout: false
                     </button>
                 </form>
                 <div class="is-center" id="toolbar" style="margin-bottom: 12px;">
-                    <a class="button is-small is-rounded is-info" onclick="open_setting()">set engine</a>
+                    <a class="button is-small is-rounded is-info"
+                        onclick="document.getElementById('modal').classList.add('is-active');">set engine</a>
                     <a class="button is-small is-rounded is-primary"
-                        onclick="show_info('Coming soon...', 'is-warning')">about</a>
-                    <a class="button is-small is-rounded is-danger" id="bili"
-                        href="https://www.bilibili.com/" draggable="false">bilibili</a>
+                        onclick="document.getElementById('about').classList.add('is-active');">about</a>
+                    <a class="button is-small is-rounded is-danger" id="bili" href="https://www.bilibili.com/"
+                        draggable="false" target="_self">bilibili</a>
                 </div>
                 <div id="info is-center">
                     <!-- <div class="tags has-addons">
@@ -174,7 +196,6 @@ layout: false
             </div>
         </div>
 
-        <!-- Hero footer: will stick at the bottom -->
         <div class="hero-foot" id="foot">
             <!-- <div class="tags has-addons">
                 <span class="tag is-danger">test</span>
@@ -182,9 +203,7 @@ layout: false
             </div> -->
         </div>
     </section>
-    <script>
-        document.getElementById('search_input').setAttribute("placeholder", conf);
-    </script>
+    <script>document.getElementById('search_input').setAttribute("placeholder", conf);</script>
 </body>
 
 </html>
