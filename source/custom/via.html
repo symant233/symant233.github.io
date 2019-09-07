@@ -10,7 +10,7 @@ layout: false
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="@symant233 https://github.com/symant233">
     <meta name="keywords" content="search, engine">
-    <meta name="description" content="个性化 搜索 引擎">
+    <meta name="description" content="个性化 聚合 搜索 主页">
     <title>Link ✨ Start!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <style>
@@ -109,6 +109,7 @@ layout: false
         function close_setting() {
             document.getElementById('modal').classList.remove('is-active');
             document.getElementById('about').classList.remove('is-active');
+            document.getElementById('search_input').focus();
         }
 
         let conf = get_cookie();
@@ -124,9 +125,9 @@ layout: false
                 <div class="message-body">
                     We use <code>cookies</code> to store engine configration.
                     There are eight options avaliable on this site by clicking buttons behind.
-                    <a class="button is-small is-rounded" style="background-color: #de5833; color: #ffffff;"
+                    <a class="button is-small is-rounded" style="background-color: #de5833; color: white;"
                         onclick="set_cookie('DuckDuckGo')">DuckDuckGO</a>
-                    <a class="button is-small is-rounded" style="background-color: #0c8484; color: #ffffff;"
+                    <a class="button is-small is-rounded" style="background-color: #0c8484; color: white;"
                         onclick="set_cookie('Bing_CN')">Bing_CN</a>
                     <a class="button is-small is-rounded" style="background-color: #feb632;"
                         onclick="set_cookie('Bing_EN')">Bing_EN</a>
