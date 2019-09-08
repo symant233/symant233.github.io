@@ -3,13 +3,12 @@ layout: false
 
 <!DOCTYPE html>
 <html class="is-clipped">
-<!-- <html> -->
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="@symant233 https://github.com/symant233">
-    <meta name="keywords" content="search, engine">
+    <meta name="keywords" content="search, integrate, homepage">
     <meta name="description" content="个性化 聚合 搜索 主页">
     <title>Link ✨ Start!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
@@ -44,6 +43,11 @@ layout: false
         .button.is-focused:not(:active),
         .button:focus:not(:active) {
             box-shadow: none;
+        }
+
+        .modal .modal-content {
+            padding-left: 10px;
+            padding-right: 10px;
         }
 
         #bili {
@@ -81,12 +85,7 @@ layout: false
                 var engine = list[conf];
                 window.open(engine + query, '_self');
             }
-            else { show_info('ERROR', 'is-danger'); }
             return false;
-        }
-        function show_info(msg, level) {
-            var e = document.getElementById('toolbar');
-            e.appendChild('<a class="button is-small is-rounded is-info" onclick="open_setting()">set search engine</a>');
         }
         function set_cookie(value) {
             conf = value;
@@ -111,9 +110,8 @@ layout: false
             document.getElementById('about').classList.remove('is-active');
             document.getElementById('search_input').focus();
         }
-
         let conf = get_cookie();
-        if (conf == "") conf = "Bing_EN";
+        if (conf == "") conf = "Bing_CN"; // default engine
     </script>
 </head>
 
@@ -129,7 +127,7 @@ layout: false
                         onclick="set_cookie('DuckDuckGo')">DuckDuckGO</a>
                     <a class="button is-small is-rounded" style="background-color: #0c8484; color: white;"
                         onclick="set_cookie('Bing_CN')">Bing_CN</a>
-                    <a class="button is-small is-rounded" style="background-color: #feb632;"
+                    <a class="button is-small is-rounded" style="background-color: #feb632; color: black"
                         onclick="set_cookie('Bing_EN')">Bing_EN</a>
                     <a class="button is-small is-rounded" style="background-color: #4285f4; color: white;"
                         onclick="set_cookie('Google')">Google</a>
@@ -153,12 +151,13 @@ layout: false
                 <div class="message-body">
                     <p>Welcome to this via site. This site is writen in pure javascript and CSS module
                         <code>bulma</code>.
-                        I'm a beginner of web development. The site's source code is in
+                        I'm a beginner of web development. You can find source code here: 
                         <a href="https://github.com/symant233/symant233.github.io/blob/master/custom/via.html"
-                            target="_blank">github_link</a>
-                        .</p>
-                    <p>If you have some suggestion please open an issue in that project. If you take the source code
-                        please keep the author
+                            target="_blank" style="text-decoration: none;"><span class="tag is-dark">Github_link</span></a>
+                    </p>
+                    <div style="display: block;position: relative;border-top: .1rem solid #dbdbdb;height: .1rem;margin: 5px 0;text-align: center;"></div>
+                    <p>Feel free to issue any suggestion in that project. If you take the source code
+                        please <strong>keep</strong> the author
                         information in the meta data, thanks!</p>
                 </div>
             </article>
@@ -187,7 +186,7 @@ layout: false
                     <a class="button is-small is-rounded is-danger" id="bili" href="https://www.bilibili.com/"
                         draggable="false" target="_self">bilibili</a>
                 </div>
-                <div id="info is-center">
+                <div class="is-center" id="info">
                     <!-- <div class="tags has-addons">
                         <span class="tag is-danger">test</span>
                         <a class="tag is-delete is-white"></a>
@@ -195,13 +194,6 @@ layout: false
                 </div>
                 <div style="padding-bottom: 123px;"></div>
             </div>
-        </div>
-
-        <div class="hero-foot" id="foot">
-            <!-- <div class="tags has-addons">
-                <span class="tag is-danger">test</span>
-                <a class="tag is-delete"></a>
-            </div> -->
         </div>
     </section>
     <script>document.getElementById('search_input').setAttribute("placeholder", conf);</script>
