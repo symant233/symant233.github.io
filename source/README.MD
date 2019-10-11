@@ -8,6 +8,6 @@ This repo contains my blog public data.
 
 If you want to share my posts please follow the license above.
 
-Via site: https://symant.tk/custom/via.html
+Via site: https://symant233.github.io/custom/via.html
 
 Any **abuse** report please contact `recieve#outlook.jp`.

@@ -13,7 +13,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'https://yoursite.com/child' and root as '/child/'
-url: https://symant.tk
+url: https://symant233.github.io
 root: /
 permalink: posts/:title/
 permalink_defaults:
