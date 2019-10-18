@@ -29,6 +29,20 @@ layout: false
             box-shadow: none;
         }
 
+        .message-body .button {
+            border-color: white;
+            border-width: 2px;  
+        }
+        .message-body .button:hover {
+            box-shadow: none;
+            border-color: white;
+        }
+
+        .message-body .button:focus {
+            box-shadow: none;
+            border-color: white;
+        }
+
         .button:hover {
             background-color: #66ad57;
             box-shadow: none;
@@ -78,6 +92,7 @@ layout: false
             "MDN": "https://developer.mozilla.org/zh-CN/search?q=",
             "bilibili": "https://search.bilibili.com/all?keyword=",
             "zhihu": "https://www.zhihu.com/search?type=content&q=",
+            "stackoverflow": "https://stackoverflow.com/search?q=",
         }
         function load() {
             var query = document.getElementById('search_input').value;
@@ -123,7 +138,7 @@ layout: false
             <article class="message is-info" style="max-width: 640px; margin: auto;">
                 <div class="message-body">
                     We use <code>cookies</code> to store engine configration.
-                    There are nine options avaliable on this site by clicking buttons behind.
+                    There are several options avaliable on this site, you can get access to these search engines by clicking the buttons behind.
                     <a class="button is-small is-rounded" style="background-color: #de5833; color: white;"
                         onclick="set_cookie('DuckDuckGo')">DuckDuckGO</a>
                     <a class="button is-small is-rounded" style="background-color: #0c8484; color: white;"
@@ -142,6 +157,8 @@ layout: false
                         onclick="set_cookie('bilibili')">bilibili</a>
                     <a class="button is-small is-rounded" style="background-color: #0077e6; color: white;"
                         onclick="set_cookie('zhihu')">zhihu</a>
+                    <a class="button is-small is-rounded" style="background-color: #f48024; color: white;"
+                        onclick="set_cookie('stackoverflow')">stackoverflow</a>
                     You will see the input placeholder text changed to the engine name.
                 </div>
             </article>
