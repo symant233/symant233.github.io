@@ -20,6 +20,8 @@ script:
   # - npm audit fix
   - hexo clean && hexo g
   - cd ./public
+  - mv index.html index2.html # rename index.html
+  - cp ./custom/via.html ./index.html # use via.html
   - git init
   - git config user.name "symant233"
   - git config user.email "symant233@gmail.com"
