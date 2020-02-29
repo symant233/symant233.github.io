@@ -40,5 +40,5 @@ branches:
   only:
     - hexo
 env:
- global:
-   - GH_REF: github.com/symant233/symant233.github.io.git
+  global:
+    - GH_REF: github.com/symant233/symant233.github.io.git
