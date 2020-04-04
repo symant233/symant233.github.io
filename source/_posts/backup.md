@@ -56,7 +56,7 @@ Some files from `/etc/apache2/sites-available`
 
         ErrorLog ${APACHE_LOG_DIR}/error.log
         CustomLog ${APACHE_LOG_DIR}/access.log combined
-        ErrorDocument 404 /custom/404.html
+        ErrorDocument 404 /static/404.html
         # For most configuration files from conf-available/, which are
         # enabled or disabled at a global level, it is possible to
         # include a line for only one particular virtual host. For example the

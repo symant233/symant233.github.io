@@ -20,14 +20,21 @@ script:
   # - npm audit fix
   - hexo clean && hexo g
   - cd ./public
-  - mv index.html index2.html # rename index.html
-  - cp ./custom/via.html ./index.html # use via.html
+
+  # copy static files
+  - cp -R ../static ./static
+
+  # temporary remove homepage
+  - mv index.html index2.html
+  - cp ./static/via.html ./index.html
+
+  # git commands
   - git init
   - git config user.name "symant233"
   - git config user.email "symant233@gmail.com"
   - git add .
   - git commit -m "Travis-CI auto build."
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+  - git push --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
 
 
 # after_script:
