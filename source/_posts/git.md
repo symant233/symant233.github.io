@@ -20,10 +20,10 @@ categories:
 
 ![](https://user-gold-cdn.xitu.io/2020/4/2/17139c44acec736d?w=797&h=174&f=png&s=78087)
 
-
+<!-- more -->
 ### Git中的四类对象
 
-> `Blob`（块）对象，`Tree`（树）对象，`Commit`（提交）对象，`Tag`（标签）对象。 ----[来源](https://juejin.im/post/5e79ea975188255e277a3892#heading-5)
+> `Blob`（块）对象，`Tree`（树）对象，`Commit`（提交）对象，`Tag`（标签）对象。 --[来源](https://juejin.im/post/5e79ea975188255e277a3892#heading-5)
 
 ![](https://user-gold-cdn.xitu.io/2020/4/2/17139d5cb4235c46?w=500&h=338&f=png&s=118010)
 
@@ -183,7 +183,7 @@ git stash pop      # 弹出，等同于 apply+drop
 
 ### git merge
 
-<div align=center><img src="https://user-gold-cdn.xitu.io/2020/4/4/17143bc9ba03a78f?w=956&h=846&f=png&s=62043" style="zoom:60%" /></div>
+<div align=center><img src="https://user-gold-cdn.xitu.io/2020/4/4/17143bc9ba03a78f?w=956&h=846&f=png&s=62043" style="zoom:50%" /></div>
 
 右侧为 **快速合并**（Fast-Forward-Merge），要求被提交分支无其它 commit。[图源](https://nvie.com/posts/a-successful-git-branching-model/#incorporating-a-finished-feature-on-develop)
 
@@ -314,7 +314,7 @@ git log --abbrev-commit  # 缩短哈希长度
 ***
 ## 0x8 其它
 ```
-git cherry-pick <commit——id>  # 取特定 commit 追加到当前分支
+git cherry-pick <commit_id>  # 取特定 commit 追加到当前分支
 gitk  # 图形化界面
 git config color.ui true  # 彩色的 git 输出
 git config format.pretty oneline  # 显示历史记录时，只显示一行注释信息
@@ -331,6 +331,6 @@ git config format.pretty oneline  # 显示历史记录时，只显示一行注�
 - 腾讯IMWeb团队 [十分钟了解git那些“不常用”命令](https://juejin.im/post/5e84797ce51d4546ff6fe3ac) （`git rebase`）
 - 图形化 Git 分支练习 [Learn Git Branching](https://learngitbranching.js.org/?locale=zh_CN)
 - atlassian [Git Workflows and Tutorials](https://github.com/oldratlee/translations/tree/master/git-workflows-and-tutorials)
-<div style="text-align: right">抓狸（@symant233）<b>禁止非授权转载</b></div>
 
-***
+> 掘金链接: [https://juejin.im/post/5e85905e6fb9a03c703fa694](https://juejin.im/post/5e85905e6fb9a03c703fa694)
+<div style="text-align: right">抓狸（@symant233）<b>禁止非授权转载</b></div>

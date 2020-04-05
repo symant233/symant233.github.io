@@ -3,6 +3,7 @@ PNG (png)，  文件头：89504E47 文件尾：AE 42 60 82
 GIF (gif)，  文件头：47494638 文件尾：00 3B 
 ZIP (zip)，  文件头：504B0304 文件尾：50 4B
 TIFF (tif)， 文件头：49492A00 文件尾：
+<!-- more -->
 Windows Bitmap (bmp)， 文件头：424D 文件尾：
 CAD (dwg)，   文件头：41433130 文件尾：
 Adobe Photoshop (psd)，   文件头：38425053 文件尾：
