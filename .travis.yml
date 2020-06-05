@@ -11,10 +11,9 @@ install:
   - npm install
 
 before_script:
- # - npm install -g gulp
- - npm install hexo-cli --save
- - npm install hexo-renderer-jade hexo-renderer-stylus hexo-wordcount --save
-
+  # - npm install -g gulp
+  - npm install hexo-cli --save
+  - npm install hexo-renderer-jade hexo-renderer-stylus hexo-wordcount --save
 
 script:
   # - npm audit fix
@@ -25,8 +24,8 @@ script:
   - cp -R ../static ./static
 
   # temporary remove homepage
-  - mv index.html index2.html
-  - cp ./static/via.html ./index.html
+  # - mv index.html index2.html
+  # - cp ./static/via.html ./index.html
 
   # git commands
   - git init
@@ -35,7 +34,6 @@ script:
   - git add .
   - git commit -m "Travis-CI auto build."
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
-
 
 # after_script:
 #   - cd ../
