@@ -13,8 +13,109 @@
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
     ></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="/static/css/resume.css" />
   </head>
   <body>
-    <div></div>
+    <div id="main">
+      <figure class="image is-96x96" style="margin: 0 auto;">
+        <img src="../img/avatar.jpg" id="avatar" />
+      </figure>
+      <p class="describe">symant233, 正在寻求前端实习机会</p>
+      <div class="divider"></div>
+      <div class="content" id="content">
+        <p class="sum">个人介绍</p>
+        <ul>
+          <li>本科: 北京信息科技大学/信息安全 (2021毕业)</li>
+          <li>住址: 北京市海淀区 (性别: 男)</li>
+          <li>英语: CET6 能阅读英文文档</li>
+          <li>
+            Github:
+            <a href="https://github.com/symant233" target="_blank">symant233</a
+            >, 为开源项目贡献过代码
+          </li>
+          <li>期望职位: Web前端开发 (北京)</li>
+        </ul>
+        <p class="sum">技能清单</p>
+        <ul>
+          <li>
+            HTML/CSS: 熟悉, 但还需继续学习. 框架用过<code>Bulma</code>,
+            计划学习<code>Bootstrap</code>中.
+          </li>
+          <li>JavaScript: 主要是<code>Node.js</code>, jQuery也可.</li>
+          <li>
+            <strong>Node.js: </strong>熟练,
+            <code>koa, mongodb, electron...</code>见项目部分.
+          </li>
+          <li><strong>Vue.js: </strong>学习中... 已有项目. (正在搞Vuex)</li>
+          <li>
+            Linux: 基本操作没问题, 建过站<code>apache, nginx</code>(见博客,
+            因为票票没再续费).
+          </li>
+          <li>Python: 熟练, 主要是做爬虫, 签到脚本和机器学习用 (见Github)</li>
+          <li>
+            数据库: <code>MySQL, MongoDB, MS SQL Server</code>, redis计划中
+          </li>
+          <li>
+            其他: C, Java 都学习过但是没有再深入. Git: 基本熟悉.
+          </li>
+        </ul>
+        <p class="sum">项目经历</p>
+        <ul>
+          <li>
+            <a href="https://github.com/symant233/mofu-web" target="_blank"
+              >mofu-web</a
+            >
+            聊天应用前端部分 (开发中), 想做成类似QQ, 微信那样的聊天工具,
+            前后端分离, 主要使用了<code>Vue.js</code>. 后端部分私有仓库,
+            使用了<code>koa2, jsonwebtoken, mongodb, socket.io</code>
+          </li>
+          <li>
+            <a
+              href="https://github.com/symant233/Child_Health_Electron"
+              target="_blank"
+              >child_health_electron</a
+            >
+            儿保医用桌面程序 (停止维护), 主要用到了<code>electron, vue.js</code
+            >. 项目的 README 里有详细介绍与截图, 由于是赶出来的代码质量不太行QAQ
+          </li>
+        </ul>
+        <p class="sum">学校经历</p>
+        <div class="text">
+          北京信息科技大学 (2017-2021) 信息安全专业<br />
+          七星网络安全社团 2019校网安竞赛(CTF)一等奖<br />
+          获得过校奖学金(二等，三等) 国家励志奖学金 CET6 (英语仍在学习中)<br />
+        </div>
+        <p class="sum">其他</p>
+        <ul>
+          <li>
+            Blog:
+            <a href="https://symant233.github.io" target="_blank"
+              >https://symant233.github.io</a
+            >
+          </li>
+          <li class="hide">
+            掘金:
+            <a
+              href="https://juejin.im/user/5e251636518825265c2490d2/posts"
+              target="_blank"
+              >Link</a
+            >
+            主要是发文章/笔记, 现在也没多少内容
+          </li>
+          <li>
+            MDN: Mozilla的开发者网络, 修订文章和翻译.
+            <a
+              href="https://developer.mozilla.org/zh-CN/profiles/symant233"
+              target="_blank"
+              >Link</a
+            >
+          </li>
+          <li id="email">邮箱: symant233</li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      $("#email").append("#gmail.com");
+    </script>
   </body>
 </html>

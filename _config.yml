@@ -5,7 +5,7 @@
 # Site
 title: symant's blog
 subtitle: Knowledge is infinite.
-description: ちゅごくじん、京都の大学生です、よろしくお願いいたします。
+description: 北京的一枚在校大学生, 请多关照.
 keywords:
 author: symant233
 language: en
@@ -45,16 +45,16 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
+  path: ""
   per_page: 10
   order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -76,14 +76,14 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: melody
-Plugins: 
+Plugins:
   - hexo-generator-feed
-feed: 
+feed:
   type: atom
   path: atom.xml
   limit: 20
 
-algolia: 
+algolia:
   chunkSize: 5000
   fields:
     - title
@@ -99,14 +99,14 @@ algolia:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:symant233/symant233.github.io.git 
+  repo: git@github.com:symant233/symant233.github.io.git
   branch: master
 
 sitemap:
   path: sitemap.xml
 
-# Optimize
-## Optimize
+  # Optimize
+  ## Optimize
   # Defaults
   image_min: true
   css_concat: true
@@ -118,13 +118,13 @@ sitemap:
 
 css_minifier:
   enable: true
-  exclude: 
-    - '*.min.css'
+  exclude:
+    - "*.min.css"
 js_minifier:
   enable: true
   mangle: true
-  exclude: 
-    - '*.min.js'
+  exclude:
+    - "*.min.js"
 image_minifier:
   enable: false
 
@@ -151,7 +151,7 @@ offline:
     - urlPattern: /*
       handler: cacheFirst
       options:
-        origin: unpkg.com 
+        origin: unpkg.com
     - urlPattern: /*
       handler: cacheFirst
       options:
@@ -175,4 +175,4 @@ offline:
     - urlPattern: /*
       handler: cacheFirst
       options:
-        origin: ws1.sinaimg.cn 
+        origin: ws1.sinaimg.cn
