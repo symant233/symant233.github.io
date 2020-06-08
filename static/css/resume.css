@@ -39,8 +39,8 @@ html {
 
 #avatar {
   margin: 0 auto;
-  height: 96px;
-  width: 96px;
+  height: 64px;
+  width: 64px;
   border-radius: 100%;
   background: url(../img/avatar.jpg) no-repeat;
   background-size: cover;
@@ -78,4 +78,8 @@ div.text {
 
 .hide {
   display: none;
+}
+
+a:visited {
+  color: #00d1b2;
 }

@@ -17,8 +17,8 @@
   </head>
   <body>
     <div id="main">
-      <figure class="image is-96x96" style="margin: 0 auto;">
-        <img src="../img/avatar.jpg" id="avatar" />
+      <figure class="image is-64x64" style="margin: 0 auto;">
+        <img src="../img/avatar.jpg" class="is-rounded" />
       </figure>
       <p class="describe">symant233, 正在寻求前端实习机会</p>
       <div class="divider"></div>
@@ -66,8 +66,8 @@
               >mofu-web</a
             >
             聊天应用前端部分 (开发中), 想做成类似QQ, 微信那样的聊天工具,
-            前后端分离, 主要使用了<code>Vue.js</code>. 后端部分私有仓库,
-            使用了<code>koa2, jsonwebtoken, mongodb, socket.io</code>
+            前后端分离, 主要使用了<code>Vue.js</code>. 后端部分私有仓库, RESTful
+            api, 使用了<code>koa2, jsonwebtoken, mongodb, socket.io</code> ...
           </li>
           <li>
             <a
@@ -110,12 +110,16 @@
               >Link</a
             >
           </li>
-          <li id="email">邮箱: symant233</li>
+          <li>邮箱: <a href="" id="email"></a> 欢迎联系</li>
         </ul>
       </div>
     </div>
     <script>
-      $("#email").append("#gmail.com");
+      const id = "symant233";
+      const mail = "gmail.com";
+      const email = id + "@" + mail;
+      $("#email").append(email);
+      $("#email").attr("href", "mailto:" + email);
     </script>
   </body>
 </html>
