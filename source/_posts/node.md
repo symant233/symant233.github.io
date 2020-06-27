@@ -74,6 +74,9 @@ time.getTime()
 Object.keys(array).forEach((index) => {
   array[index];
 });
+for (let index in array) {
+  array[index];
+}
 // 扩展运算符(spread)
 const arr1 = [1];
 const arr2 = [2, 3];
@@ -117,6 +120,10 @@ js 中所有数字都存储成 64 位浮点数, 但所有按位运算都以 32 �
 
 二进制比特位移运算[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#%E6%8C%89%E4%BD%8D%E7%A7%BB%E5%8A%A8%E6%93%8D%E4%BD%9C%E7%AC%A6), [JavaScript 位运算符](https://www.w3school.com.cn/js/js_bitwise.asp)
 
+- 符号位(Sign) 1bit (0 正数 1 负数)
+- 指数位(Exponent) 32 位 8bit 64 位 11bit
+- 尾数(Mantissa) 32 位 23bit 64 位 52bit
+
 ```js
 (-1 >>> 0).toString(2);
 // "11111111111111111111111111111111" 32位, 十进制 -1
@@ -128,13 +135,21 @@ js 中所有数字都存储成 64 位浮点数, 但所有按位运算都以 32 �
 // 十进制 -2147483648, 等于-(2^31) (32位最小值)
 ```
 
-## ES6
+二进制转十进制 `parseInt(110, 2); // 6`. 64 位最大可表示 2^53
+
+数值精度: [wangdoc](https://wangdoc.com/javascript/types/number.html#%E6%95%B0%E5%80%BC%E7%B2%BE%E5%BA%A6).. 比特位转化：[IEEE-754 Floating Point Converter](https://www.h-schmidt.net/FloatConverter/IEEE754.html).
+
+### Buffer 🔨
+
+`Buffer` 对象用于以字节序列的形式来表示二进制数据。 [文档](http://nodejs.cn/api/buffer.html#buffer_buffer)
+
+### ES6 🔨
 
 不用`var`因其存在变量提升，`let`和`const`块级作用域，不能声明前调用。
 
 变量解构赋值，如`[x, y] = [y, x]`，详见 [link](https://es6.ruanyifeng.com/#docs/destructuring)。
 
-字符串 （unicode，字符串`for ... of`遍历，模板字符串）[link](https://es6.ruanyifeng.com/#docs/string)。
+字符串 （unicode，字符串`for ... of`遍历，模板字符串）[link](https://es6.ruanyifeng.com/#docs/string)。 字符串转十六进制 Unicode [link](https://stackoverflow.com/questions/21647928/javascript-unicode-string-to-hex)
 
 字符串对象的方法 - `includes`，`startsWith`，`endsWith`参数皆为字符串。
 还有方法`padStart`，`padEnd`第一个参数为长度，第二参数为填充。
@@ -154,5 +169,64 @@ Math.hypot(3, 4); // 5 (3的平方加上4的平方，等于5的平方)
 ```
 
 函数: 使用箭头函数需要注意`this`作用域等 [MDN 使用注意点](https://es6.ruanyifeng.com/#docs/function#%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E7%82%B9), [MDN 不适用场合](https://es6.ruanyifeng.com/#docs/function#%E4%B8%8D%E9%80%82%E7%94%A8%E5%9C%BA%E5%90%88)
+
+### Path
+
+```js
+__dirname; // 文件的文件夹绝对路径路径
+__filename; // 文件的绝对路径
+process.cwd(); // 执行时的终端工作路径 (同./)
+```
+
+使用内置库`path`，中文[文档](http://nodejs.cn/api/path.html)。
+
+```js
+const path = require("path");
+path.parse("/dir1/dir2/file.txt");
+// { root: '/', dir: '/dir1/dir2', base: 'file.txt', ext: '.txt', name: 'file' }
+```
+
+- [path.resolve()](http://nodejs.cn/api/path.html#path_path_resolve_paths) 方法会将路径或路径片段的序列解析为绝对路径。
+- [path.join()](http://nodejs.cn/api/path.html#path_path_join_paths)将所有给定的`path`片段连接到一起, 规范化生成的路径.
+
+### Promise 🔨
+
+![](https://user-gold-cdn.xitu.io/2020/6/27/172f3f34c880afcc?w=543&h=157&f=png&s=14947)
+传入函数中使用的`resolve(..)`, `reject(..)`会调用`.then()`里的函数.
+
+```js
+const promise = new Promise((resolve, reject) => {
+  const res = "message";
+  if (false) reject("error"); // 出现异常reject
+  // throw new Error("error message");
+  resolve(res);
+})
+  .then(
+    (response) => {
+      // success (in then)
+      return response; // "message"
+    },
+    function (rejectMsg) {
+      // rejected (in then)
+      console.log(rejectMsg); // "error"
+    }
+  )
+  .catch((error) => {
+    console.log(error);
+  });
+```
+
+`then`方法可以接受两个回调函数作为参数。第一个回调函数是`Promise`对象的状态变为`resolved`时调用，第二个回调函数是`Promise`对象的状态变为`rejected`时调用。
+
+```js
+promise.then(
+  function (value) {
+    // success
+  },
+  function (error) {
+    // failure
+  }
+);
+```
 
 未完成 待更新
