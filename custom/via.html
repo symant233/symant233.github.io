@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html class="is-clipped">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="@symant233 https://github.com/symant233">
+    <meta name="keywords" content="search, integrate, homepage">
+    <meta name="description" content="个性化 聚合 搜索 主页">
+    <title>Link ✨ Start!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <style>
+        .input {
+            border-color: #dbdbdb;
+            box-shadow: none;
+        }
+
+        .input:hover {
+            border-color: #dbdbdb;
+        }
+
+        .input:focus {
+            background-color: #fff;
+            border-color: #dbdbdb;
+            color: #363636;
+            box-shadow: none;
+        }
+
+        .message-body .button {
+            border-color: white;
+            border-width: 2px;
+        }
+
+        .message-body .button:hover {
+            box-shadow: none;
+            border-color: white;
+        }
+
+        .message-body .button:focus {
+            box-shadow: none;
+            border-color: white;
+        }
+
+        .button:hover {
+            background-color: #66ad57;
+            box-shadow: none;
+            border-color: #dbdbdb;
+        }
+
+        .button:focus {
+            box-shadow: none;
+            border-color: #dbdbdb;
+        }
+
+        .button.is-focused:not(:active),
+        .button:focus:not(:active) {
+            box-shadow: none;
+        }
+
+        .modal .modal-content {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        #bili {
+            background-color: #ff8eb3;
+            color: white;
+        }
+
+        #bili:hover {
+            background-color: #f874a0;
+        }
+
+        #bili:active {
+            background-color: #fc5d92;
+        }
+
+        #bili:focus {
+            box-shadow: none;
+        }
+    </style>
+    <script>
+        var list = {
+            "DuckDuckGo": "https://start.duckduckgo.com/?q=",
+            "Bing_CN": "https://cn.bing.com/search?ensearch=0&q=",
+            "Bing_EN": "https://cn.bing.com/search?ensearch=1&q=",
+            "Google": "https://www.google.com/search?q=",
+            "Yandex": "https://yandex.com/search/?text=",
+            "Github": "https://github.com/search?q=",
+            "MDN": "https://developer.mozilla.org/zh-CN/search?q=",
+            "bilibili": "https://search.bilibili.com/all?keyword=",
+            "zhihu": "https://www.zhihu.com/search?type=content&q=",
+            "stackoverflow": "https://stackoverflow.com/search?q=",
+        }
+        var hashs = [
+            { s: '#npm', u: 'https://www.npmjs.com/package/' },
+            { s: '#pixiv', u: 'https://www.pixiv.net/artworks/' },
+            { s: '#biliav', u: 'https://www.bilibili.com/video/' }
+        ]
+        function load() {
+            var query = document.getElementById('search_input').value;
+            if (query != "") {
+                document.getElementById("search_button").classList.add('is-loading');
+                if (query.startsWith('#')) return do_hash(query);
+                var engine = list[conf];
+                window.open(engine + query, '_self');
+            }
+            return false;
+        }
+        function do_hash(query) {
+            var [pre, search] = query.split(' ');
+            for (const i in hashs) {
+                if (hashs[i].s == pre) {
+                    window.open(hashs[i].u + search, '_self');
+                }
+            }
+            return false;
+        }
+        function set_cookie(value) {
+            conf = value;
+            document.cookie = "engine=" + value + ";path=/";
+            document.getElementById('search_input').setAttribute("placeholder", value);
+            close_setting();
+        }
+        function get_cookie() {
+            var cname = 'engine';
+            var name = cname + '=';
+            var all = document.cookie.split(';');
+            for (i = 0; i < all.length; i++) {
+                var c = all[i].trim();
+                if (c.indexOf('engine=') == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        function close_setting() {
+            document.getElementById('modal').classList.remove('is-active');
+            document.getElementById('about').classList.remove('is-active');
+            document.getElementById('hashs').classList.remove('is-active');
+            document.getElementById('search_input').focus();
+        }
+        let conf = get_cookie();
+        if (conf == "") conf = "Bing_CN"; // default engine
+    </script>
+</head>
+
+<body>
+    <div class="modal" id="modal">
+        <div class="modal-background" onclick="close_setting()"></div>
+        <div class="modal-content">
+            <article class="message is-info" style="max-width: 640px; margin: auto;">
+                <div class="message-body">
+                    We use <code>cookies</code> to store engine configration.
+                    There are several options avaliable on this site, you can get access to these search engines by
+                    clicking the buttons behind.
+                    <a class="button is-small is-rounded" style="background-color: #de5833; color: white;" onclick="set_cookie('DuckDuckGo')">DuckDuckGO</a>
+                    <a class="button is-small is-rounded" style="background-color: #0c8484; color: white;" onclick="set_cookie('Bing_CN')">Bing_CN</a>
+                    <a class="button is-small is-rounded" style="background-color: #feb632; color: black" onclick="set_cookie('Bing_EN')">Bing_EN</a>
+                    <a class="button is-small is-rounded" style="background-color: #4285f4; color: white;" onclick="set_cookie('Google')">Google</a>
+                    <a class="button is-small is-rounded" style="background-color: #ff0000; color: white;" onclick="set_cookie('Yandex')">Yandex</a>
+                    <a class="button is-small is-rounded" style="background-color: #24292e; color: white;" onclick="set_cookie('Github')">Github</a>
+                    <a class="button is-small is-rounded" style="background-color: #87d1f1; color: black;" onclick="set_cookie('MDN')">MDN</a>
+                    <a class="button is-small is-rounded" style="background-color: #f45a8d; color: white;" onclick="set_cookie('bilibili')">bilibili</a>
+                    <a class="button is-small is-rounded" style="background-color: #0077e6; color: white;" onclick="set_cookie('zhihu')">zhihu</a>
+                    <a class="button is-small is-rounded" style="background-color: #f48024; color: white;" onclick="set_cookie('stackoverflow')">stackoverflow</a>
+                    You will see the input placeholder text changed to the engine name.
+                </div>
+            </article>
+        </div>
+    </div>
+    <div class="modal" id="about">
+        <div class="modal-background" onclick="close_setting()"></div>
+        <div class="modal-content">
+            <article class="message is-primary" style="max-width: 500px; margin: auto;">
+                <div class="message-body">
+                    <p>Welcome to this via site. This site is writen in pure javascript and
+                        CSS module <code>bulma</code>.
+                        I'm a beginner of web development. You can find source code here:
+                        <a href="https://github.com/symant233/symant233.github.io/blob/master/custom/via.html" target="_blank" style="text-decoration: none;"><span class="tag is-dark">Github_link</span></a>
+                    </p>
+                    <div style="display: block;position: relative;border-top: .1rem solid #dbdbdb;height: .1rem;margin: 5px 0;text-align: center;">
+                    </div>
+                    <p>Feel free to issue any suggestion in that project. If you take the source code
+                        please <strong>keep</strong> the author
+                        information in the meta data, thanks!</p>
+                </div>
+            </article>
+        </div>
+        <button class="modal-close is-large delete" aria-label="close" onclick="close_setting()"></button>
+    </div>
+    <div class="modal" id="hashs">
+        <div class="modal-background" onclick="close_setting()"></div>
+        <div class="modal-content">
+            <!-- hashs declaration-->
+            <article class="message is-warning">
+                <div class="message-body">
+                    Hashs use prefix <code>#</code> to decide search performance.
+                    It's an idea from duckduckgo <code><a href="https://start.duckduckgo.com/bang" target="_blank" rel="noopener">Bangs</a></code>,
+                    hashs are shortcuts that quickly take you to the specific page on other sites. Mapping of hashs are
+                    listed below.<div id="components-demo">
+                        <button-counter></button-counter>
+                    </div>
+                </div>
+                <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>shortcut</th>
+                            <th>prefix</th>
+                        </tr>
+                    </thead>
+                    <tbody id="hashs-table">
+                        <tr>
+                            <td>#npm</td>
+                            <td>https://www.npmjs.com/package/{*}</td>
+                        </tr>
+                        <tr>
+                            <td>#pixiv</td>
+                            <td>https://www.pixiv.net/artworks/{*}</td>
+                        </tr>
+                        <tr>
+                            <td>#biliav</td>
+                            <td>https://www.bilibili.com/video/{*}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">search examples: <code onclick="document.getElementById('search_input').value = '#npm koa'; close_setting();">
+                                #npm koa</code>/ <code onclick="document.getElementById('search_input').value = '#pixiv 69045444'; close_setting();">
+                                #pixiv 69045444</code> (click to tryout!)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+        </div>
+
+        <button class="modal-close is-large delete" aria-label="close" onclick="close_setting()"></button>
+    </div>
+    <section class="hero is-light is-fullheight">
+        <div class="hero-body has-text-centered">
+            <div style="margin: auto; width: 613px;">
+                <img src="/images/2233.png" width="90%" draggable="false">
+                <form style="width: 100%; box-shadow: 0px 0px 10px 0px rgba(10,10,10,.1);" class="field is-medium has-addons" onsubmit="return load()">
+                    <input id="search_input" class="input is-medium" type="text" placeholder="✎Search..." style="border-right-color: white; border-top-right-radius: 0%; border-bottom-right-radius: 0%;" autocomplete="off" autofocus>
+                    <button id="search_button" class="button is-medium" type="submit" onclick="load()" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;">
+                        🔍
+                    </button>
+                </form>
+                <div class="is-center" id="toolbar" style="margin-bottom: 12px;">
+                    <a class="button is-small is-rounded is-info" onclick="document.getElementById('modal').classList.add('is-active');">set engine</a>
+                    <a class="button is-small is-rounded is-primary" onclick="document.getElementById('about').classList.add('is-active');">about</a>
+                    <a class="button is-small is-rounded is-warning" onclick="document.getElementById('hashs').classList.add('is-active');">hashs</a>
+                    <a class="button is-small is-rounded is-danger" id="bili" href="https://www.bilibili.com/" draggable="false" target="_self">bilibili</a>
+                </div>
+                <div style="padding-bottom: 123px;"></div>
+            </div>
+        </div>
+    </section>
+    <script>document.getElementById('search_input').setAttribute("placeholder", conf);</script>
+
+</body>
+
+</html>

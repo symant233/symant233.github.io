@@ -1,0 +1,85 @@
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #aaa;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+::selection {
+  background-color: #32d0b0;
+  color: #ffffff;
+}
+
+html {
+  background-color: hsl(0, 0%, 96%);
+}
+
+#main {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.divider {
+  display: block;
+  position: relative;
+  border-top: 0.1rem solid #dbdbdb;
+  height: 0.1rem;
+  margin: 5px 10px;
+  text-align: center;
+}
+
+#avatar {
+  margin: 0 auto;
+  height: 64px;
+  width: 64px;
+  border-radius: 100%;
+  background: url(../img/avatar.jpg) no-repeat;
+  background-size: cover;
+}
+
+.describe {
+  margin: 1rem;
+  text-align: center !important;
+}
+
+#content {
+  margin: 20px 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  #content {
+    margin: 20px 10px;
+  }
+}
+
+p.sum {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+div.text {
+  margin-left: 16px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.content p:not(:last-child) {
+  margin-bottom: 0;
+}
+
+.hide {
+  display: none;
+}
+
+a:visited {
+  color: #00d1b2;
+}
