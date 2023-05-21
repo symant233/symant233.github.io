@@ -68,6 +68,23 @@ time.getTime()
 # 159000000000
 ```
 
+### JS deepClone or [`structuredClone()`](https://developer.mozilla.org/zh-CN/docs/Web/API/structuredClone)
+
+```js
+function deepClone(obj) {
+  if (typeof obj !== "object" || obj === null) {
+    return obj;
+  }
+  const clone = Array.isArray(obj) ? [] : {};
+  for (let key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      clone[key] = deepClone(obj[key]);
+    }
+  }
+  return clone;
+}
+```
+
 ### Array
 
 ```js
@@ -84,7 +101,7 @@ arr1.push(...arr2); // [1, 2, 3]
 const arr3 = [...arr2, 5]; // [2, 3, 5]
 ```
 
-- 拷贝: 可以使用数组实例的`concat`方法或扩展运算符`[...arr]`来深拷贝一个数组 (即数组更改互不影响), 但是如果数组里有对象元素则是浅拷贝 (更改对象内容会同步更改, 拷贝了对象的引用). 更多可参考[link](https://juejin.im/post/5b5dcf8351882519790c9a2e).
+- 拷贝: 可以使用数组实例的`concat`方法或扩展运算符`[...arr]`来深拷贝一个数组 (即数组更改互不影响), 但是如果数组里有对象元素则是浅拷贝 (更改对象内容会同步更改, 拷贝了对象的引用). 更多可参考[link](https://juejin.im/post/6844904197595332622).
 
 ```js
 deepClone = (element) => {
@@ -101,6 +118,8 @@ deepClone = (element) => {
 
 ### Function
 
+参数默认值
+
 ```js
 func = function (
   url,
@@ -112,6 +131,17 @@ func = function (
 ) {
   // ... do stuff
 };
+```
+
+Closure 闭包
+
+```js
+const myFunc = (function () {
+  let t = 1;
+  return function () {
+    return t++;
+  };
+})();
 ```
 
 ### Number
@@ -139,9 +169,48 @@ js 中所有数字都存储成 64 位浮点数, 但所有按位运算都以 32 �
 
 数值精度: [wangdoc](https://wangdoc.com/javascript/types/number.html#%E6%95%B0%E5%80%BC%E7%B2%BE%E5%BA%A6).. 比特位转化：[IEEE-754 Floating Point Converter](https://www.h-schmidt.net/FloatConverter/IEEE754.html).
 
+### Classes [ref](https://basarat.gitbook.io/typescript/future-javascript/classes#statics)
+
+```ts
+class FooBase {
+  static a = 0;
+  public x: number;
+  private y: number;
+  protected z: number;
+}
+class Child extends FooBase {
+  constructor() {
+    super();
+  }
+}
+
+FooBase.a; // 可以访问, 所有FooBase类
+Child.a; // 和它的子类都共享同一个值
+
+// EFFECT ON INSTANCES
+var foo = new FooBase();
+foo.x; // okay
+foo.y; // ERROR : private
+foo.z; // ERROR : protected
+
+// EFFECT ON CHILD CLASSES
+class FooChild extends FooBase {
+  constructor() {
+    super();
+    this.x; // okay
+    this.y; // ERROR: private
+    this.z; // okay
+  }
+}
+```
+
 ### Buffer 🔨
 
 `Buffer` 对象用于以字节序列的形式来表示二进制数据。 [文档](http://nodejs.cn/api/buffer.html#buffer_buffer)
+
+```js
+
+```
 
 ### ES6 🔨
 
@@ -191,7 +260,8 @@ path.parse("/dir1/dir2/file.txt");
 
 ### Promise 🔨
 
-![](https://user-gold-cdn.xitu.io/2020/6/27/172f3f34c880afcc?w=543&h=157&f=png&s=14947)
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fd58bb33270f46de819c2dbd98a8779c~tplv-k3u1fbpfcp-zoom-1.image)
+
 传入函数中使用的`resolve(..)`, `reject(..)`会调用`.then()`里的函数.
 
 ```js
@@ -229,4 +299,16 @@ promise.then(
 );
 ```
 
-未完成 待更新
+### yarn audit fix ?
+
+```bash
+# Generate the package-lock.json file without installing node modules
+npm install --package-lock-only
+# Fix the packages and update the package-lock.json file
+npm audit fix
+# Remove the yarn.lock file and import the package-lock.json file into yarn.lock
+rm yarn.lock
+yarn import
+# Remove the package-lock.json file
+rm package-lock.json
+```
